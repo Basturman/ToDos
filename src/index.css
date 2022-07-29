@@ -124,7 +124,7 @@ main{
   flex-direction:column;
   justify-content: space-between;
   align-items: center;
-  font-family: fantasy;
+  font-family: "roboto" , sans-serif;
 }
 .done{
   text-decoration: line-through;

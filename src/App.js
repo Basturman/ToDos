@@ -4,7 +4,7 @@ import Context from './context';
 import AddTodo from './AddTodo';
 import TodoSort from './TodoSort';
 
-function App() {
+function App() {  
   const [todos1, setTodos1] = React.useState(
     localStorage.getItem("todos1") ? JSON.parse(localStorage.getItem("todos1")) : [] 
   )
@@ -21,6 +21,7 @@ function App() {
   const [done,setDone] = React.useState(false)
   const [notDone,setNotDone] = React.useState(false)
   const [todo, setTodo] = React.useState(null)
+  const [dragCont,setDragCont] = React.useState(null)
 
   React.useEffect(() => {
     localStorage.setItem("todos1", JSON.stringify(todos1))
@@ -106,26 +107,28 @@ function App() {
     setDone(false)
     setAllTodos(false)
   }
-  function dragStartHendler(e,todo){
+  function dragStartHendler(e,todo,todos){
     setTodo(todo)
+    setDragCont(todos)
   }
   function dragOverHendler(e){
     e.preventDefault()
   }
   function dropHendler(container){
-    if (container===todos1) {
-      removeTodo(todo.id)
-      setTodos1(todos1.concat([todo]))
+    if(container!==dragCont){
+      if (container===todos1) {
+        removeTodo(todo.id)
+        setTodos1(todos1.concat([todo]))
+      }
+      else if (container===todos2) {
+        removeTodo(todo.id)
+        setTodos2(todos2.concat([todo]))
+      }
+      else if (container===todos3) {
+        removeTodo(todo.id)
+        setTodos3(todos3.concat([todo]))
+      }
     }
-    else if (container===todos2) {
-      removeTodo(todo.id)
-      setTodos2(todos2.concat([todo]))
-    }
-    else if (container===todos3) {
-      removeTodo(todo.id)
-      setTodos3(todos3.concat([todo]))
-    }
-    
   }
 
 

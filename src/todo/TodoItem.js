@@ -49,7 +49,7 @@ function TodoItem({todos, todo, index, onChange, allTodos, todosDone,
     if (allTodos) {
         return(
             <li style={styles.sttodos} draggable={true} 
-                onDragStart={(e) => dragStartHendler(e,todo)}
+                onDragStart={(e) => dragStartHendler(e,todo,todos)}
                 onDragOver={(e) =>dragOverHendler(e)}
                 onDrop={() => {dropHendler(todos)}}>
                 <span style={styles.spanText} className={classes.join(' ')}>
@@ -66,7 +66,7 @@ function TodoItem({todos, todo, index, onChange, allTodos, todosDone,
         if (todo.completed) {
             return(
                 <li style={styles.sttodos} draggable={true}
-                    onDragStart={(e) => dragStartHendler(e,todo)}
+                    onDragStart={(e) => dragStartHendler(e,todo,todos)}
                     onDragOver={(e) =>dragOverHendler(e)}
                     onDrop={() => {dropHendler(todos)}}>
                     <span style={styles.spanText} className={classes.join(' ')}>
@@ -87,7 +87,7 @@ function TodoItem({todos, todo, index, onChange, allTodos, todosDone,
         if (!todo.completed) {
             return(
                 <li style={styles.sttodos} draggable={true}
-                    onDragStart={(e) => dragStartHendler(e,todo)}
+                    onDragStart={(e) => dragStartHendler(e,todo,todos)}
                     onDragOver={(e) =>dragOverHendler(e)}
                     onDrop={() => {dropHendler(todos)}}>
                     <span style={styles.spanText} className={classes.join(' ')}>
